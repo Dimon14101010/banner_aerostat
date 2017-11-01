@@ -1,0 +1,68 @@
+$bannerWidth: 300px;
+$bannerHeight: 600px;
+$middleWidth: 130px;
+$qrHeight: 60px;
+$qrWidth: 60px;
+
+@mixin size {
+  width: $bannerWidth;
+  height: $bannerHeight;
+}
+@mixin font ($top,$left,$font-size,$font-weight: normal) {
+  position: absolute;
+  top: $top;
+  left: $left;
+  margin: 0;
+  padding: 0;
+  width: $bannerWidth - 40;
+  font-size: $font-size;
+  font-family: Oswald;
+  font-weight: $font-weight;
+  letter-spacing: 1px;
+  color: #fff;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+.container {
+  position: relative;
+  overflow: hidden;
+  @include size
+}
+.bg-img {
+  transform-origin: bottom left;
+  @include size
+}
+.top_text_big {
+  @include font(50px, 20px, 35px, bold);
+}
+.top_text_small {
+  line-height: 1em;
+  @include font(100px, 20px, 20px , bold);
+}
+.middle_text {
+  @include font(250px , 150px, 12px);
+  display: block;
+  word-wrap: break-word;
+  width: $middleWidth;
+  line-height: 1em;
+  text-align: right;
+}
+.qr_container {
+  position: absolute;
+  top:$bannerHeight - 20 - $qrHeight;
+  left: $bannerWidth - 20 - $qrWidth;
+}
+.qr {
+  @include font (0, 0, 0);
+  width: $qrWidth;
+  height: $qrHeight;
+  overflow: hidden;
+}
+#img {
+  position: absolute;
+  top: $qrHeight;
+  left: $qrWidth;
+}
